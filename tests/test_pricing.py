@@ -6,7 +6,7 @@ from decimal import Decimal as D
 from pathlib import Path
 from unittest.mock import patch
 
-from pricing import (calculate, convert, credits, number, parse_catalog,
+from pricing import (calculate, cheapest_models, convert, credits, number, parse_catalog,
                      read_catalog, save_catalog, subscription, tokens, usage)
 
 
@@ -69,6 +69,19 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(subscription(10, 110, counts)["allocated"], 10)
         with self.assertRaises(ValueError):
             credits(dict(weights=dict(input="6.9", cached="1.7", output="24")), counts)
+
+    def test_cheapest_currency_ties_and_missing_write(self):
+        models = [dict(name="USD", currency="USD", rates=dict(input="2", cached="1", output="3", write=None)),
+                  dict(name="CNY", currency="CNY", rates=dict(input="7", cached="7", output="21", write="7"))]
+        winners, compared, skipped = cheapest_models(models, usage("1m", 0, 0), "7")
+        self.assertEqual([w[0]["name"] for w in winners], ["CNY"])
+        self.assertEqual((compared, skipped), (2, 0))
+        self.assertEqual(len(cheapest_models(models, usage("1m", "1m", 0), "7")[0]), 2)
+        self.assertEqual(cheapest_models(models, usage(1, 0, 0, 1), "7")[1:], (1, 1))
+        with self.assertRaises(ValueError):
+            cheapest_models(models[:1], usage(1, 0, 0, 1), "7")
+        with self.assertRaises(ValueError):
+            cheapest_models(models, usage(1, 0, 0), "0")
 
     def test_catalog_roundtrip_and_atomic_failure(self):
         data = read_catalog(Path(__file__).parents[1] / "prices.json")

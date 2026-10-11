@@ -12,7 +12,7 @@ from decimal import Decimal
 from pathlib import Path
 from tkinter import filedialog, messagebox, simpledialog, ttk
 
-from pricing import (MILLION, RATE_KEYS, calculate, convert, credits, money,
+from pricing import (MILLION, RATE_KEYS, calculate, cheapest_models, convert, credits, money,
                      number, parse_catalog, read_catalog, save_catalog,
                      subscription, usage)
 
@@ -117,6 +117,8 @@ class App(tk.Tk):
         self.fx = self.var("7")
         ttk.Entry(fxrow, textvariable=self.fx, width=8).pack(side="left", padx=8)
         ttk.Label(fxrow, text="CNY  （7 是演示值，请按实际汇率修改）", style="Muted.TLabel").pack(side="left")
+        self.cheapest_button = ttk.Button(fxrow, text="定位最便宜模型", command=self.find_cheapest)
+        self.cheapest_button.pack(side="right")
 
         self.tabs = ttk.Notebook(body)
         self.tabs.pack(fill="both", expand=True)
@@ -322,6 +324,26 @@ class App(tk.Tk):
             self.month.set(str(capacity))
         except ValueError as exc:
             messagebox.showerror("无法估算月用量", str(exc), parent=self)
+
+    def find_cheapest(self):
+        try:
+            winners, compared, skipped = cheapest_models(self.catalog["models"], self.counts(), self.fx.get())
+        except ValueError as exc:
+            messagebox.showerror("无法比较价格", str(exc), parent=self)
+            return
+        model, usd, cny = winners[0]
+        self.tabs.select(0)
+        self.model.set(model["name"])
+        self.select_model()
+        self.scroll_canvas.yview_moveto(0)
+        names = "\n".join(item[0]["name"] for item in winners)
+        messagebox.showinfo("当前用量的最低 API 费用",
+                            f"{names}\n\nUSD {money(usd)} / CNY {money(cny)}\n"
+                            f"已比较 {compared} 个已保存档位；跳过 {skipped} 个缺少缓存写入单价的档位。\n"
+                            + (f"共 {len(winners)} 个并列最低，已定位第一个。\n" if len(winners) > 1 else "已自动选中该档位。\n")
+                            + "按价格表和当前汇率比较，临时修改的单价需先另存模型。\n"
+                            "请核对所选档位的地区、时段、上下文和优惠条件；订阅摊销不参与 API 比价。",
+                            parent=self)
 
     def use_sample(self):
         sample = self.selected("plans").get("sample")

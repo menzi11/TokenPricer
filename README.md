@@ -22,6 +22,8 @@ Official price tables provide the rates; TokenPricer combines those rates with y
 
 ## Calculate API costs
 
+Click **定位最便宜模型** after entering usage to compare saved API profiles at the current exchange rate and select the cheapest. Ties are listed; profiles missing required cache-write prices are skipped. Check region, time, context and promotion conditions. Save edited rates as a model before comparing; subscription allocations are excluded.
+
 Input, cached input, cache writes and output are priced separately using decimal arithmetic. Cached reads and writes are subsets of total input, preventing double counting. Select the appropriate context or peak/off-peak profile before calculating. Output should include any billed reasoning tokens.
 
 ## Estimate subscription costs

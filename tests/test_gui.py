@@ -53,6 +53,27 @@ class GuiTests(unittest.TestCase):
         app.month.set("0")
         self.assertEqual(app.last_result, "")
 
+    def test_cheapest_button_selects_saved_model_and_rejects_invalid_usage(self):
+        app = self.app
+        app.total.set("1.09b")
+        app.cached.set("1.04b")
+        app.output.set("2.89m")
+        app.tabs.select(1)
+        expected = min(app.catalog["models"], key=lambda m: sum(
+            float(m["rates"][k]) * count for k, count in
+            (("input", 50), ("cached", 1040), ("output", 2.89))) / (7 if m["currency"] == "CNY" else 1))
+        with patch("app.messagebox.showinfo") as info:
+            app.cheapest_button.invoke()
+        self.assertEqual(app.model.get(), expected["name"])
+        self.assertEqual(app.tabs.index(app.tabs.select()), 0)
+        self.assertIn(expected["name"], info.call_args.args[1])
+        self.assertIn("USD", app.api_result.cget("text"))
+        app.cached.set("2b")
+        with patch("app.messagebox.showerror") as error:
+            app.cheapest_button.invoke()
+        error.assert_called_once()
+        self.assertEqual(app.model.get(), expected["name"])
+
     def test_save_and_reload_custom_price(self):
         app = self.app
         app.rate_vars["input"].set("0.123")

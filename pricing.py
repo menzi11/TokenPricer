@@ -78,6 +78,22 @@ def convert(amount, currency, usd_cny):
     raise ValueError("币种只能是 USD 或 CNY")
 
 
+def cheapest_models(models, counts, usd_cny):
+    number(usd_cny, "换算汇率", positive=True)
+    candidates, skipped = [], 0
+    for model in models:
+        if counts["write"] and model["rates"].get("write") is None:
+            skipped += 1
+            continue
+        cost = calculate(model["rates"], counts)["total"]
+        usd, cny = convert(cost, model["currency"], usd_cny)
+        candidates.append((model, usd, cny))
+    if not candidates:
+        raise ValueError("价格表中没有可计算的档位，请补充缓存写入单价后再比较")
+    minimum = min(item[1] for item in candidates)
+    return [item for item in candidates if item[1] == minimum], len(candidates), skipped
+
+
 def subscription(monthly_fee, monthly_tokens, counts, extra=0):
     fee = number(monthly_fee, "月费")
     extra = number(extra, "每月额外费用")
