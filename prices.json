@@ -1,0 +1,474 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "astra-short",
+      "name": "GPT-6 Astra / Standard 短上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "10",
+        "cached": "1",
+        "output": "50",
+        "write": "12.5"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 短上下文档；请按官方账单选择长/短档，不按累计月 token 判断。缓存写入单独填写。"
+    },
+    {
+      "id": "astra-long",
+      "name": "GPT-6 Astra / Standard 长上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "20",
+        "cached": "2",
+        "output": "75.0",
+        "write": "25.0"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 长上下文档；档位按供应商会话规则确定，非逐段累进计费。"
+    },
+    {
+      "id": "sol-short",
+      "name": "GPT-6.1 Sol / Standard 短上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "2",
+        "cached": "0.1",
+        "output": "10",
+        "write": "2.5"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 短上下文档；请按官方账单选择长/短档，不按累计月 token 判断。缓存写入单独填写。"
+    },
+    {
+      "id": "sol-long",
+      "name": "GPT-6.1 Sol / Standard 长上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "4",
+        "cached": "0.2",
+        "output": "15.0",
+        "write": "5.0"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 长上下文档；档位按供应商会话规则确定，非逐段累进计费。"
+    },
+    {
+      "id": "luna-short",
+      "name": "GPT-6 Luna / Standard 短上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "0.1",
+        "cached": "0.01",
+        "output": "0.5",
+        "write": "0.125"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 短上下文档；请按官方账单选择长/短档，不按累计月 token 判断。缓存写入单独填写。"
+    },
+    {
+      "id": "luna-long",
+      "name": "GPT-6 Luna / Standard 长上下文",
+      "currency": "USD",
+      "rates": {
+        "input": "0.2",
+        "cached": "0.02",
+        "output": "0.75",
+        "write": "0.25"
+      },
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "标准 API 长上下文档；档位按供应商会话规则确定，非逐段累进计费。"
+    },
+    {
+      "id": "opus",
+      "name": "Claude Opus 5.5",
+      "currency": "USD",
+      "rates": {
+        "input": "4",
+        "cached": "0.2",
+        "output": "20",
+        "write": "5.0"
+      },
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-10-11",
+      "note": "标准全球路由；缓存写入栏采用 5 分钟 TTL（替代该部分普通输入价格）。1 小时 TTL 请自定义写入单价。"
+    },
+    {
+      "id": "sonnet",
+      "name": "Claude Sonnet 5.5",
+      "currency": "USD",
+      "rates": {
+        "input": "2",
+        "cached": "0.1",
+        "output": "10",
+        "write": "2.5"
+      },
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-10-11",
+      "note": "标准全球路由；缓存写入栏采用 5 分钟 TTL（替代该部分普通输入价格）。1 小时 TTL 请自定义写入单价。"
+    },
+    {
+      "id": "haiku",
+      "name": "Claude Haiku 4.5",
+      "currency": "USD",
+      "rates": {
+        "input": "1",
+        "cached": "0.1",
+        "output": "5",
+        "write": "1.25"
+      },
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-10-11",
+      "note": "标准全球路由；缓存写入栏采用 5 分钟 TTL（替代该部分普通输入价格）。1 小时 TTL 请自定义写入单价。"
+    },
+    {
+      "id": "gemini-lite",
+      "name": "Gemini 3.5 Flash-Lite",
+      "currency": "USD",
+      "rates": {
+        "input": "0.3",
+        "cached": "0.03",
+        "output": "2.5",
+        "write": null
+      },
+      "source": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "付费 Standard 文本费率；输出含 thinking。另有缓存存储费，本计算不含存储时长费用。"
+    },
+    {
+      "id": "gemini-flash",
+      "name": "Gemini 3.8 Flash / 2026 年优惠",
+      "currency": "USD",
+      "rates": {
+        "input": "0.75",
+        "cached": "0.075",
+        "output": "3.75",
+        "write": null
+      },
+      "source": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "仅适用于截至 2026-12-31 的优惠；之后请选常规档。输出含 thinking；不含缓存存储费。"
+    },
+    {
+      "id": "gemini-flash-2027",
+      "name": "Gemini 3.8 Flash / 2027 年常规",
+      "currency": "USD",
+      "rates": {
+        "input": "1.5",
+        "cached": "0.15",
+        "output": "7.5",
+        "write": null
+      },
+      "source": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked": "2026-10-11",
+      "note": "官方公布自 2027-01-01 起的标准费率，提前测算用；不含缓存存储费。"
+    },
+    {
+      "id": "ds-flash-peak",
+      "name": "DeepSeek V4.1 Flash / 高峰",
+      "currency": "USD",
+      "rates": {
+        "input": "0.3",
+        "cached": "0.006",
+        "output": "1.2",
+        "write": null
+      },
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "checked": "2026-10-11",
+      "note": "高峰：工作日 UTC 01–04、06–10（北京时间 09–12、14–18），中国法定节假日除外；其余为低谷。需手动选档。"
+    },
+    {
+      "id": "ds-flash-off",
+      "name": "DeepSeek V4.1 Flash / 低谷",
+      "currency": "USD",
+      "rates": {
+        "input": "0.15",
+        "cached": "0.003",
+        "output": "0.6",
+        "write": null
+      },
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "checked": "2026-10-11",
+      "note": "高峰：工作日 UTC 01–04、06–10（北京时间 09–12、14–18），中国法定节假日除外；其余为低谷。需手动选档。"
+    },
+    {
+      "id": "ds-pro-peak",
+      "name": "DeepSeek V4 Pro / 高峰",
+      "currency": "USD",
+      "rates": {
+        "input": "1.32",
+        "cached": "0.044",
+        "output": "3.96",
+        "write": null
+      },
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "checked": "2026-10-11",
+      "note": "高峰：工作日 UTC 01–04、06–10（北京时间 09–12、14–18），中国法定节假日除外；其余为低谷。需手动选档。"
+    },
+    {
+      "id": "ds-pro-off",
+      "name": "DeepSeek V4 Pro / 低谷",
+      "currency": "USD",
+      "rates": {
+        "input": "0.66",
+        "cached": "0.022",
+        "output": "1.98",
+        "write": null
+      },
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "checked": "2026-10-11",
+      "note": "高峰：工作日 UTC 01–04、06–10（北京时间 09–12、14–18），中国法定节假日除外；其余为低谷。需手动选档。"
+    },
+    {
+      "id": "kimi-k3-cn",
+      "name": "Kimi K3 / 国内 API",
+      "currency": "CNY",
+      "rates": {
+        "input": "20",
+        "cached": "2",
+        "output": "100",
+        "write": "20"
+      },
+      "source": "https://platform.kimi.com/",
+      "checked": "2026-10-11",
+      "note": "缓存写入采用 5 分钟 TTL；1 小时 TTL 写入为 40 元/百万。输入与写入按账单分项填写，不要重复计数。"
+    },
+    {
+      "id": "kimi-k27-cn",
+      "name": "Kimi K2.7 Code / 国内 API",
+      "currency": "CNY",
+      "rates": {
+        "input": "6.5",
+        "cached": "1.3",
+        "output": "27",
+        "write": null
+      },
+      "source": "https://platform.kimi.com/",
+      "checked": "2026-10-11",
+      "note": "国内平台人民币标价；API 与 Kimi 会员分别计费。"
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3 / 国际 API",
+      "currency": "USD",
+      "rates": {
+        "input": "3",
+        "cached": "0.3",
+        "output": "15",
+        "write": "3"
+      },
+      "source": "https://platform.kimi.ai/",
+      "checked": "2026-10-11",
+      "note": "国际平台美元标价，缓存写入为默认 5 分钟 TTL；API 与会员分开计费。"
+    },
+    {
+      "id": "glm-cn",
+      "name": "GLM-5.3 / 智谱国内 API",
+      "currency": "CNY",
+      "rates": {
+        "input": "8",
+        "cached": "2",
+        "output": "28",
+        "write": null
+      },
+      "source": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+      "checked": "2026-10-11",
+      "note": "人民币 API 价格，缓存存储官方标为限时免费；Coding Plan 为独立订阅。"
+    },
+    {
+      "id": "glm-flash-cn",
+      "name": "GLM-5.3-Flash / 智谱国内 API",
+      "currency": "CNY",
+      "rates": {
+        "input": "0.8",
+        "cached": "0.23",
+        "output": "2.8",
+        "write": null
+      },
+      "source": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+      "checked": "2026-10-11",
+      "note": "人民币 API 价格；不含图片/视频生成、搜索等按次费用。"
+    },
+    {
+      "id": "glm-global",
+      "name": "GLM-5.3 / Z.ai 国际 API",
+      "currency": "USD",
+      "rates": {
+        "input": "1.4",
+        "cached": "0.26",
+        "output": "4.4",
+        "write": null
+      },
+      "source": "https://docs.z.ai/guides/overview/pricing",
+      "checked": "2026-10-11",
+      "note": "国际美元 API 价格；与国内平台不同。"
+    },
+    {
+      "id": "cursor-grok",
+      "name": "Cursor / Grok 4.6",
+      "currency": "USD",
+      "rates": {
+        "input": "2",
+        "cached": "0.5",
+        "output": "6",
+        "write": null
+      },
+      "source": "https://cursor.com/docs/models-and-pricing",
+      "checked": "2026-10-11",
+      "note": "Cursor Models 池标准档模型用量标价；不是订阅实际增量账单。订阅请切换到订阅估算。"
+    },
+    {
+      "id": "cursor-composer",
+      "name": "Cursor / Composer 2.5",
+      "currency": "USD",
+      "rates": {
+        "input": "0.5",
+        "cached": "0.2",
+        "output": "2.5",
+        "write": null
+      },
+      "source": "https://cursor.com/docs/models-and-pricing",
+      "checked": "2026-10-11",
+      "note": "Cursor Models 池标准档模型用量标价；不是订阅实际增量账单。"
+    }
+  ],
+  "plans": [
+    {
+      "id": "cursor-Pro",
+      "name": "Cursor Pro",
+      "monthly": "20",
+      "currency": "USD",
+      "source": "https://cursor.com/docs/models-and-pricing",
+      "checked": "2026-10-11",
+      "note": "官方月费。Cursor Models 与 Other Models 两个池；当前页未公开固定 token 配额。下方月用量是你自己的假设，不保证能用到；超额费手动填写。",
+      "sample": {
+        "monthly_tokens": "290200000",
+        "source": "https://www.reddit.com/r/cursor/comments/1wjzc8n/pro_20_vs_pro_60_vs_ultra_200_real_included_usage/",
+        "note": "2026-06-27 至 07-27 单用户报告：两个池合计 290.2M（130.4M + 159.8M）。模型混用；作者称两池用满。只是历史样本，不保证现有套餐能达到。"
+      }
+    },
+    {
+      "id": "cursor-Pro+",
+      "name": "Cursor Pro+",
+      "monthly": "60",
+      "currency": "USD",
+      "source": "https://cursor.com/docs/models-and-pricing",
+      "checked": "2026-10-11",
+      "note": "官方月费。Cursor Models 与 Other Models 两个池；当前页未公开固定 token 配额。下方月用量是你自己的假设，不保证能用到；超额费手动填写。",
+      "sample": {
+        "monthly_tokens": "1565100000",
+        "source": "https://www.reddit.com/r/cursor/comments/1wjzc8n/pro_20_vs_pro_60_vs_ultra_200_real_included_usage/",
+        "note": "2026-07-13 至 08-13 单用户报告：两个池合计 1,565.1M（1,100M + 465.1M）。模型混用；作者称两池用满。不同月份不可当作固定倍率。"
+      }
+    },
+    {
+      "id": "cursor-Ultra",
+      "name": "Cursor Ultra",
+      "monthly": "200",
+      "currency": "USD",
+      "source": "https://cursor.com/docs/models-and-pricing",
+      "checked": "2026-10-11",
+      "note": "官方月费。Cursor Models 与 Other Models 两个池；当前页未公开固定 token 配额。下方月用量是你自己的假设，不保证能用到；超额费手动填写。",
+      "sample": {
+        "monthly_tokens": "6600000000",
+        "source": "https://www.reddit.com/r/cursor/comments/1wjzc8n/pro_20_vs_pro_60_vs_ultra_200_real_included_usage/",
+        "note": "2026-08-16 至 09-16 单用户报告：两个池合计 6,600M（4,200M + 2,400M）。池使用率为 81.1% 和 99.8%，并非耗尽容量。不能外推到任意模型。"
+      }
+    },
+    {
+      "id": "kimi-Andante",
+      "name": "Kimi Andante / 帮助中心月费",
+      "monthly": "49",
+      "currency": "CNY",
+      "source": "https://www.kimi.com/en/help/membership/membership-pricing",
+      "checked": "2026-10-11",
+      "note": "官方帮助中心人民币月费；未公布固定 token 配额。多功能共享额度且 Kimi Code 有独立限额。月 token 是使用假设，不是可用配额；以实际订阅页为准。"
+    },
+    {
+      "id": "kimi-Moderato",
+      "name": "Kimi Moderato / 帮助中心月费",
+      "monthly": "99",
+      "currency": "CNY",
+      "source": "https://www.kimi.com/en/help/membership/membership-pricing",
+      "checked": "2026-10-11",
+      "note": "官方帮助中心人民币月费；未公布固定 token 配额。多功能共享额度且 Kimi Code 有独立限额。月 token 是使用假设，不是可用配额；以实际订阅页为准。"
+    },
+    {
+      "id": "kimi-Allegretto",
+      "name": "Kimi Allegretto / 帮助中心月费",
+      "monthly": "199",
+      "currency": "CNY",
+      "source": "https://www.kimi.com/en/help/membership/membership-pricing",
+      "checked": "2026-10-11",
+      "note": "官方帮助中心人民币月费；未公布固定 token 配额。多功能共享额度且 Kimi Code 有独立限额。月 token 是使用假设，不是可用配额；以实际订阅页为准。",
+      "sample": {
+        "monthly_tokens": "950000000",
+        "source": "https://locdd.com/t/topic/71380",
+        "note": "2026-07-17 K3 / 199 元档单用户按进度反推约 950M/月，作者本人也不确定；并非完整月账单实测。现在可能已调整；仅供敏感性估算。"
+      }
+    },
+    {
+      "id": "kimi-Allegro",
+      "name": "Kimi Allegro / 帮助中心月费",
+      "monthly": "699",
+      "currency": "CNY",
+      "source": "https://www.kimi.com/en/help/membership/membership-pricing",
+      "checked": "2026-10-11",
+      "note": "官方帮助中心人民币月费；未公布固定 token 配额。多功能共享额度且 Kimi Code 有独立限额。月 token 是使用假设，不是可用配额；以实际订阅页为准。"
+    },
+    {
+      "id": "glm-Lite",
+      "name": "GLM Coding Lite / Z.ai",
+      "monthly": "18",
+      "currency": "USD",
+      "source": "https://docs.z.ai/devpack/overview",
+      "checked": "2026-10-11",
+      "note": "Z.ai 国际版 GLM-5.3：积分倍率与额度已核对官方文档。低谷积分减半；高峰是工作日北京时间 14–18 时。周额度不能跨周积攒，5 小时限额独立生效。",
+      "weekly": "10000",
+      "window": "2000",
+      "weights": {
+        "input": "6.9",
+        "cached": "1.7",
+        "output": "24"
+      }
+    },
+    {
+      "id": "glm-Pro",
+      "name": "GLM Coding Pro / Z.ai（月费参考）",
+      "monthly": "80",
+      "currency": "USD",
+      "source": "https://docs.z.ai/devpack/overview",
+      "checked": "2026-10-11",
+      "note": "Z.ai 国际版 GLM-5.3：积分倍率与额度已核对官方文档。低谷积分减半；高峰是工作日北京时间 14–18 时。周额度不能跨周积攒，5 小时限额独立生效。 月费为公开报道参考值（2026-09），本次未能从动态订阅页复核，请按账单修改；不视为当前官方报价。",
+      "weekly": "60000",
+      "window": "12000",
+      "weights": {
+        "input": "6.9",
+        "cached": "1.7",
+        "output": "24"
+      }
+    },
+    {
+      "id": "glm-Max",
+      "name": "GLM Coding Max / Z.ai（月费参考）",
+      "monthly": "168",
+      "currency": "USD",
+      "source": "https://docs.z.ai/devpack/overview",
+      "checked": "2026-10-11",
+      "note": "Z.ai 国际版 GLM-5.3：积分倍率与额度已核对官方文档。低谷积分减半；高峰是工作日北京时间 14–18 时。周额度不能跨周积攒，5 小时限额独立生效。 月费为公开报道参考值（2026-09），本次未能从动态订阅页复核，请按账单修改；不视为当前官方报价。",
+      "weekly": "140000",
+      "window": "28000",
+      "weights": {
+        "input": "6.9",
+        "cached": "1.7",
+        "output": "24"
+      }
+    }
+  ]
+}
