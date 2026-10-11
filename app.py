@@ -109,7 +109,7 @@ class App(tk.Tk):
         for col, (label, var) in enumerate((("总输入（含缓存部分）", self.total), ("其中缓存命中", self.cached), ("输出（含计费推理）", self.output), ("其中缓存写入", self.write))):
             box.columnconfigure(col, weight=1)
             self.field(box, label, var, 0, col)
-        ttk.Label(box, text="支持 1,000 / 10k / 1m / 1万。缓存命中、写入是总输入的子集；没有缓存就填 0。", style="Muted.TLabel").grid(row=1, column=0, columnspan=4, sticky="w", padx=8, pady=5)
+        ttk.Label(box, text="支持 10k / 1M / 1B（10亿）/ 1万，大小写通用。缓存命中、写入是总输入的子集。", style="Muted.TLabel").grid(row=1, column=0, columnspan=4, sticky="w", padx=8, pady=5)
 
         fxrow = ttk.Frame(body)
         fxrow.pack(fill="x", pady=10)

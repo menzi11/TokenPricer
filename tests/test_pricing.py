@@ -26,6 +26,14 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(convert(result["total"], "USD", "7.2"), (D("1.315"), D("9.4680")))
         self.assertEqual(convert(D("7.2"), "CNY", "7.2"), (D(1), D("7.2")))
 
+    def test_billion_token_formats_and_limits(self):
+        for value, expected in [("1B", 10**9), ("1b", 10**9), ("1.5B", 1500000000), ("0.000000001B", 1), ("1,000,000B", 10**15)]:
+            with self.subTest(value=value):
+                self.assertEqual(tokens(value), expected)
+        for value in ("0.0000000001B", "1000001B", "1BB"):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                tokens(value)
+
     def test_invalid_cache_and_unsupported_write(self):
         with self.assertRaises(ValueError):
             usage(100, 90, 10, 11)
@@ -54,6 +62,13 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(credits(plan, counts), D(462))
         self.assertEqual(credits(plan, counts, True), D(231))
         self.assertIsNone(credits({}, counts))
+
+    def test_subscription_cache_writes_only_restricted_for_glm(self):
+        counts = usage(100, 50, 10, 20)
+        self.assertIsNone(credits({}, counts))
+        self.assertEqual(subscription(10, 110, counts)["allocated"], 10)
+        with self.assertRaises(ValueError):
+            credits(dict(weights=dict(input="6.9", cached="1.7", output="24")), counts)
 
     def test_catalog_roundtrip_and_atomic_failure(self):
         data = read_catalog(Path(__file__).parents[1] / "prices.json")

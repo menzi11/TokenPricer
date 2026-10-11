@@ -42,7 +42,7 @@ Presets retain their original USD or CNY currency. Results show both currencies 
 
 The initial snapshot was checked on **2026-10-11**. The application does not fetch prices automatically. Model rates, promotions, subscription rules and community estimates can become outdated. GLM international Pro/Max monthly fees are explicitly marked as reference values pending checkout verification. Read the [source notes](docs/pricing-sources.md) before relying on a subscription estimate.
 
-Other conveniences: `10k`, `1m`, `1万` token inputs; instant recalculation; copy results; restore built-in prices; scrollable layout for shorter/high-DPI screens. No API key, account connection or network request is required to calculate. Opening a source link launches your browser.
+Other conveniences: `10k`, `1M`, `1B`, `1.5B`, `1万` in every token field (case-insensitive; `1B` = 1,000,000,000); instant recalculation; copy results; restore built-in prices; scrollable layout for shorter/high-DPI screens. No API key, account connection or network request is required to calculate. Opening a source link launches your browser.
 
 ## Start
 

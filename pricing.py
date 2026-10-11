@@ -34,11 +34,11 @@ def number(value, label="数值", *, positive=False) -> Decimal:
 
 def tokens(value, label="Token 数") -> int:
     text = str(value).strip().lower().replace("，", ",")
-    # Accept properly grouped numbers, k/m and Chinese 万/亿; never silently truncate.
-    match = re.fullmatch(r"([0-9]+(?:\.[0-9]+)?|[0-9]{1,3}(?:,[0-9]{3})+(?:\.[0-9]+)?)([km万亿]?)", text)
+    # Accept properly grouped numbers, k/m/b and Chinese 万/亿; never silently truncate.
+    match = re.fullmatch(r"([0-9]+(?:\.[0-9]+)?|[0-9]{1,3}(?:,[0-9]{3})+(?:\.[0-9]+)?)([kmb万亿]?)", text)
     if not match:
-        raise ValueError(f"{label}请填非负整数，可用 1,000、10k、1m、1万")
-    multiplier = {"": 1, "k": 1000, "m": 1000000, "万": 10000, "亿": 100000000}[match[2]]
+        raise ValueError(f"{label}请填非负整数，可用 1,000、10k、1m、1B、1万")
+    multiplier = {"": 1, "k": 1000, "m": 1000000, "b": 1000000000, "万": 10000, "亿": 100000000}[match[2]]
     result = number(match[1].replace(",", ""), label) * multiplier
     if result != result.to_integral_value() or result > 10**15:
         raise ValueError(f"{label}必须是 0 到 10^15 之间的整数")
@@ -95,11 +95,11 @@ def subscription(monthly_fee, monthly_tokens, counts, extra=0):
 
 
 def credits(plan, counts, off_peak=False):
-    if counts["write"]:
-        raise ValueError("GLM 积分估算请将缓存写入计入普通输入，缓存写入栏填 0")
     weights = plan.get("weights")
     if weights is None:
         return None
+    if counts["write"]:
+        raise ValueError("GLM 积分估算请将缓存写入计入普通输入，缓存写入栏填 0")
     with localcontext() as ctx:
         ctx.prec = 60
         cost = sum(Decimal(counts[k]) * number(weights[k]) for k in ("input", "cached", "output")) / 10000

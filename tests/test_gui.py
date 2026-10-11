@@ -68,6 +68,22 @@ class GuiTests(unittest.TestCase):
         finally:
             reloaded.destroy()
 
+    def test_billion_inputs_across_api_and_subscription(self):
+        app = self.app
+        app.model.set("GPT-6.1 Sol / Standard 短上下文")
+        app.select_model()
+        app.total.set("1.5B")
+        app.cached.set("1b")
+        app.write.set("0.1B")
+        app.output.set("0.2B")
+        self.assertIn("USD  3150", app.api_result.cget("text").replace(",", ""))
+        app.tabs.select(1)
+        app.plan.set("Cursor Pro")
+        app.select_plan()
+        app.month.set("1.7B")
+        app.update()
+        self.assertIn("USD  20", app.sub_result.cget("text"))
+
     def test_historical_estimate_is_labeled_and_editable(self):
         app = self.app
         app.tabs.select(1)
